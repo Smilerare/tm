@@ -1,0 +1,31 @@
+{% include 'adminheader.html' %}
+{% load staticfiles %}
+<br><br><br>
+<h1 class="label label-info">分类管理/编辑分类</h1>
+<br><br>
+<div class="panel panel-warning editDiv">
+	  <div class="panel-heading">修改分类</div>
+	  <div class="panel-body">
+	    	<form method="post" id="addForm" action="/admin_category_edit/" enctype="multipart/form-data">
+	    		{% csrf_token %}
+                <input type="hidden" name="id" value="{{ category.id }}"/>
+                <table class="addTable">
+	    			<tbody><tr>
+	    				<td>分类名称</td>
+	    				<td><input id="name" name="name" type="text" value="{{ category.name }}" class="form-control"></td>
+	    			</tr>
+	    			<tr>
+	    				<td>分类图片</td>
+	    				<td>
+	    					<input id="categoryPic" type="file" name="file">
+	    				</td>
+	    			</tr>
+	    			<tr class="submitTR">
+	    				<td colspan="2" align="center">
+	    					<button type="submit" class="btn btn-success">提 交</button>
+	    				</td>
+	    			</tr>
+	    		</tbody></table>
+	    	</form>
+	  </div>
+	</div>

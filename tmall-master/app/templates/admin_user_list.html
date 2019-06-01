@@ -1,0 +1,49 @@
+{% include 'adminheader.html' %}
+<div class="workingArea">
+    <br><br><br>
+	<h1 class="label label-info">用户管理</h1>
+
+	<br>
+	<br>
+
+	<div class="listDataTableDiv">
+		<table class="table table-striped table-bordered table-hover  table-condensed">
+			<thead>
+				<tr class="success">
+					<th>ID</th>
+					<th>用户名称</th>
+				</tr>
+			</thead>
+			<tbody>
+            {% for user in userlist %}
+                <tr>
+					<td>{{ user.id }}</td>
+					<td>{{ user.name }}</td>
+                </tr>
+            {% endfor %}
+			</tbody>
+		</table>
+	</div>
+</nav>
+	</div>
+
+<!-- 	<div class="panel panel-warning addDiv"> -->
+<!-- 	  <div class="panel-heading">新增用户</div> -->
+<!-- 	  <div class="panel-body"> -->
+<!-- 	    	<form method="post" id="addForm" action="admin_user_add"> -->
+<!-- 	    		<table class="addTable"> -->
+<!-- 	    			<tr> -->
+<!-- 	    				<td>用户名称</td> -->
+<!-- 	    				<td><input  id="name" name="name" type="text" class="form-control"></td> -->
+<!-- 	    			</tr> -->
+<!-- 	    			<tr class="submitTR"> -->
+<!-- 	    				<td colspan="2" align="center"> -->
+<!-- 	    					<button type="submit" class="btn btn-success">提 交</button> -->
+<!-- 	    				</td> -->
+<!-- 	    			</tr> -->
+<!-- 	    		</table> -->
+<!-- 	    	</form> -->
+<!-- 	  </div> -->
+<!-- 	</div> -->
+
+</div>

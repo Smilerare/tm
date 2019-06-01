@@ -1,0 +1,73 @@
+{% include 'adminheader.html' %}
+<div class="workingArea">
+    <br><br><br>
+	<h1 class="label label-info">订单管理</h1>
+	<br>
+	<br>
+
+	<div class="listDataTableDiv">
+		<table class="table table-striped table-bordered table-hover1  table-condensed">
+			<thead>
+				<tr class="success">
+					<th>ID</th>
+					<th>状态</th>
+					<th>金额</th>
+					<th width="100px">商品数量</th>
+					<th width="100px">买家名称</th>
+					<th>创建时间</th>
+					<th>支付时间</th>
+					<th>发货时间</th>
+					<th>确认收货时间</th>
+					<th width="120px">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+            {% for order in olist %}
+					<tr>
+						<td>{{ order.id }}</td>
+						<td>{{ order.status }}</td>
+						<td>￥1,799.25</td>
+						<td align="center">1</td>
+						<td align="center">{{ order.user }}</td>
+						<td>{{ order.createDate }}</td>
+						<td>{{ order.payDate }}</td>
+						<td>{{ order.deliveryDate }}</td>
+						<td>{{ order.confirmDate }}</td>
+						<td>
+							<button oid="4730" class="orderPageCheckOrderItems btn btn-primary btn-xs">查看详情</button>
+						</td>
+					</tr>
+            {% endfor %}
+{#					<tr class="orderPageOrderItemTR" oid="4730">#}
+{#						<td colspan="10" align="center">#}
+{##}
+{#							<div class="orderPageOrderItem">#}
+{#								<table width="800px" align="center" class="orderPageOrderItemTable">#}
+{##}
+{#										<tbody><tr>#}
+{#											<td align="left">#}
+{#												<img width="40px" height="40px" src="img/productSingle/1313.jpg">#}
+{#											</td>#}
+{##}
+{#											<td>#}
+{#												<a href="foreproduct?pid=150">#}
+{#													<span>德国DGPOSY超漩式彩色马桶缓降坐便器静音节水抽水马桶连体座便器</span>#}
+{#												</a>#}
+{#											</td>#}
+{#											<td align="right">#}
+{##}
+{#												<span class="text-muted">1个</span>#}
+{#											</td>#}
+{#											<td align="right">#}
+{##}
+{#												<span class="text-muted">单价：￥1799.25</span>#}
+{#											</td>#}
+{#										</tr>#}
+{#								</tbody></table>#}
+{#							</div>#}
+{#						</td>#}
+{#					</tr>#}
+			</tbody>
+		</table>
+	</div>
+</div>

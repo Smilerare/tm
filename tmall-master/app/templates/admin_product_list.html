@@ -1,0 +1,86 @@
+{% include 'adminheader.html' %}
+<div class="workingArea">
+<br><br><br>
+	<ol class="breadcrumb">
+	  <li><a href="/admin_category_list/">所有分类</a></li>
+	  <li><a href="admin_product_list?cid={{ cid }}">平板电视</a></li>
+	  <li class="active">产品管理</li>
+	</ol>
+	<div class="listDataTableDiv">
+		<table class="table table-striped table-bordered table-hover  table-condensed">
+			<thead>
+				<tr class="success">
+					<th>ID</th>
+					<th>图片</th>
+					<th>产品名称</th>
+					<th>产品小标题</th>
+					<th width="53px">原价格</th>
+					<th width="80px">优惠价格</th>
+					<th width="80px">库存数量</th>
+					<th width="80px">图片管理</th>
+					<th width="80px">设置属性</th>
+					<th width="42px">编辑</th>
+					<th width="42px">删除</th>
+				</tr>
+			</thead>
+			<tbody>
+              {% for product in plist %}
+					<tr>
+						<td>{{ product.id }}</td>
+						<td>
+							<img width="40px" src="{{ product.img }}">
+						</td>
+						<td>{{ product.name }}</td>
+						<td>{{ product.subTitle }}</td>
+						<td>{{ product.orignalPrice }}</td>
+						<td>{{ product.promotePrice }}</td>
+						<td>{{ product.stock }}</td>
+						<td><a href="/admin_productImage_list?pid={{ product.id }}"><span class="glyphicon glyphicon-picture"></span></a></td>
+						<td><a href="/admin_product_editPropertyValue?id={{ product.id }}"><span class="glyphicon glyphicon-th-list"></span></a></td>
+
+						<td><a href="/admin_product_edit?id={{ product.id }}"><span class="glyphicon glyphicon-edit"></span></a></td>
+						<td><a deletelink="true" href="/admin_product_delete?id={{ product.id }}"><span class=" 	glyphicon glyphicon-trash"></span></a></td>
+					</tr>
+             {% endfor %}
+			</tbody>
+		</table>
+	</div>
+
+	<div class="panel panel-warning addDiv">
+		<div class="panel-heading">新增产品</div>
+		<div class="panel-body">
+			<form method="post" id="addForm" action="/admin_product_add/">
+                {% csrf_token %}
+				<table class="addTable">
+					<tbody><tr>
+						<td>产品名称</td>
+						<td><input id="name" name="name" type="text" class="form-control"></td>
+					</tr>
+					<tr>
+						<td>产品小标题</td>
+						<td><input id="subTitle" name="subTitle" type="text" class="form-control"></td>
+					</tr>
+					<tr>
+						<td>原价格</td>
+						<td><input id="orignalPrice" value="99.98" name="orignalPrice" type="text" class="form-control"></td>
+					</tr>
+					<tr>
+						<td>优惠价格</td>
+						<td><input id="promotePrice" value="19.98" name="promotePrice" type="text" class="form-control"></td>
+					</tr>
+					<tr>
+						<td>库存</td>
+						<td><input id="stock" value="99" name="stock" type="text" class="form-control"></td>
+					</tr>
+					<tr class="submitTR">
+						<td colspan="2" align="center">
+							<input type="hidden" name="cid" value="{{ cid }}">
+							<button type="submit" class="btn btn-success">提 交</button>
+						</td>
+					</tr>
+				</tbody></table>
+			</form>
+		</div>
+	</div>
+
+</div>

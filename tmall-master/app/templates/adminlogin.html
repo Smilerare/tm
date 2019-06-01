@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>后台登录</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/jquery.toast.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/adminbase.css' %}">
+     <script type="text/javascript">{{script}}('{{wrong}}')</script>
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.toast.min.js' %}"></script>
+</head>
+<body>
+ <form action="/myadmin/" method="post">
+                {% csrf_token %}
+                <div class="login_acount_text">管理员登录</div>
+                <div class="loginInput ">
+                    <span class="loginInputIcon ">
+                        <span class=" glyphicon glyphicon-user"></span>
+                    </span>
+                    <input type="text" placeholder="账号" name="username" id="name">
+                </div>
+                <div class="loginInput ">
+                    <span class="loginInputIcon ">
+                        <span class=" glyphicon glyphicon-lock"></span>
+                    </span>
+                    <input type="password" placeholder="密码" name="password" id="password">
+                </div>
+                <div style="margin-top:20px">
+                    <button type="submit" class="btn btn-block redButton">登录</button>
+                </div>
+            </form>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{% include 'adminheader.html' %}
+<div class="workingArea">
+	<ol class="breadcrumb">
+	  <li><a href="admin_category_list">所有分类</a></li>
+	  <li><a href="admin_product_list?cid=83">平板电视</a></li>
+	  <li class="active">夏普屏PANDA/熊猫 LE39D71S 39英寸智能WiFi液晶平板电视40 42 43</li>
+	  <li class="active">编辑产品属性</li>
+	</ol>
+
+	<div class="editPVDiv">
+        <form method="post" id="editForm" action="/admin_product_editPropertyValue/">
+                {% csrf_token %}
+            {% for property in propertylist %}
+			<div class="eachPV">
+				<span class="pvName">{{ property.name }}</span>
+				<span class="pvValue"><input class="pvValue" pvid="768" type="text" name="{{ property.name }}" value="{{ property.value }}"></span>
+			</div>
+            {% endfor %}
+            <input type="hidden" name="cid" value="{{ cid }}">
+            <input type="hidden" name="pid" value="{{ pid }}">
+        <button type="submit" class="btn btn-success">提 交</button></td>
+        </form>
+	<div style="clear:both"></div>
+	</div>
+
+</div>

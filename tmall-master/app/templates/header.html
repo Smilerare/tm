@@ -1,0 +1,27 @@
+<nav class="top ">
+        <a href="{% url 'index' %}">
+            <span class="glyphicon glyphicon glyphicon-home redColor"></span>
+            天猫首页
+        </a>
+
+        <span>喵，欢迎来天猫</span>
+    {% if not name %}
+            <a href="{% url 'login' %}">请登录</a>
+            <a href="{% url 'regist' %}">免费注册</a>
+    {% else %}
+            <a href="#nowhere"></a>
+            <a href="users:notifications">消息&nbsp;<b></b></a>
+            <a href="#nowhere">积分 <b>300</b></a>
+            <a href="users:itaobao">我的淘宝</a>
+            <a href="users:accountSettings">账户设置</a>
+            <a href="{% url 'logout' %}">退出</a>
+    {% endif %}
+
+        <span class="pull-right">
+            <a href="salers:salerCenter">商家入口</a>
+            <a href="/order/">我的订单</a>
+            <a href="/cart/">
+            <span class=" glyphicon glyphicon-shopping-cart redColor" ></span>
+            购物车</a>
+        </span>
+</nav>

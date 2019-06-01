@@ -1,0 +1,29 @@
+{% include 'adminheader.html' %}
+<div class="workingArea">
+	<ol class="breadcrumb">
+	  <li><a href="admin_category_list">所有分类</a></li>
+	  <li><a href="admin_property_list?cid={{ cid }}">平板电视</a></li>
+	  <li class="active">编辑属性</li>
+	</ol>
+
+	<div class="panel panel-warning editDiv">
+		<div class="panel-heading">编辑属性</div>
+		<div class="panel-body">
+			<form method="post" id="editForm" action="/admin_property_edit/">
+                	{% csrf_token %}
+				<table class="editTable">
+					<tbody><tr>
+						<td>属性名称</td>
+						<td><input id="name" name="name" value="{{ property.name }}" type="text" class="form-control"></td>
+					</tr>
+					<tr class="submitTR">
+						<td colspan="2" align="center">
+						<input type="hidden" name="id" value="{{ property.id }}">
+						<input type="hidden" name="cid" value="{{ property.cid_id }}">
+						<button type="submit" class="btn btn-success">提 交</button></td>
+					</tr>
+				</tbody></table>
+			</form>
+		</div>
+	</div>
+</div>

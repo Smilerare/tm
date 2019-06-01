@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}产品详情页{% endblock %}
+
+
+{# 引用css资源文件 #}
+{% block custom_css %}
+{#    <link href="css/fore/style.css" rel="stylesheet">#}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/fore.css' %}">
+{% endblock %}
+{# 引用js资源文件 #}
+{% block custom_js %}
+
+{% endblock %}
+
+
+{% block searchBar %}
+    {% include 'singleSearchBar.html' %}
+{% endblock %}
+{% block content %}
+<img src="{{ headimg }}" bigImageURL="{{ headimg }}" class="headImage">
+<div class="categoryProducts">
+        {% for product in products %}
+		<div class="productUnit" price="{{ product.promotePrice }}">
+			<div class="productUnitFrame">
+				<a href="/product/?pid={{ product.id }}">
+
+					<img class="productImage" src="{{ product.img }}">
+				</a>
+				<span class="productPrice">¥{{ product.promotePrice }}</span>
+				<a class="productLink" href="/product/?pid={{ product.id }}">
+				 {{ product.name }}
+				</a>
+
+				<a class="tmallLink" href="/product/?pid={{ product.id }}">天猫专卖</a>
+
+				<div class="show1 productInfo">
+					<span class="monthDeal ">月成交 <span class="productDealNumber">28笔</span></span>
+					<span class="productReview">评价<span class="productReviewNumber">18</span></span>
+					<span class="wangwang">
+					<a class="wangwanglink" href="#nowhere">
+						<img src={% static "img/site/wangwang.png" %}>
+					</a>
+					</span>
+				</div>
+			</div>
+		</div>
+    {% endfor %}
+		<div style="clear:both"></div>
+</div>
+{% endblock %}
